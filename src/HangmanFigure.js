@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import img1 from "./images/hang0.png";
+import "./HangmanFigure.css";
 
 export const HangmanFigure = () => {
     return (
-        <div>
-            <h1></h1>
+        <div className="hang-img">
+            <img src={img1} alt=""></img>
         </div>
     )
 }

@@ -1,8 +1,8 @@
 .title-container{
-    background-color: rgb(154, 154, 255);
+    background-color: rgb(167, 167, 167);
     width: fit-content;
     border-radius: 15px;
-    margin: 5rem auto;
+    margin: 0 auto;
 }
 
 .main-title{
