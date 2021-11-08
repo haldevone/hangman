@@ -19,12 +19,39 @@
     text-align: center;
 }
 
-.letters-item{
+.letter{
     padding: 5px 5px;
-    border-radius: 5px;
+    border-radius: 15px;
     width: 100%;
     margin: 0;
     text-decoration: none;
     font-size: var(--fs-h1);
-    background-color: var(--color-primary);
+    background-color: #fff000;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 100ms;
+}
+
+.letter:hover,
+.letter:focus{
+    outline: 2;
+    background: rgb(253, 248, 141);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.486);
+}
+
+.letter:active{
+    transform: scale(0.5);
+    background: rgb(219, 208, 0);
+}
+
+.hide{
+    opacity: 0;
+}
+
+.show{
+    opacity: 1;
+}
+
+.remove{
+    display: none;
 }

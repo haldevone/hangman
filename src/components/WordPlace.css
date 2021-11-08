@@ -1,0 +1,26 @@
+
+.wordplace{
+    position: relative;
+}
+
+.wordplace-wrapper{
+    right: 0;
+    left: 0;
+    top: -450px;
+    position: absolute;
+}
+
+.wordplace-list{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+
+    margin-top: 1rem;
+}
+
+.wordplace-item{
+    margin: 0 0.5rem;
+    font-size: 3rem;
+    color: rgb(75, 83, 27);
+    font-weight: bold;
+}

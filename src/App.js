@@ -1,17 +1,36 @@
+import { useState } from 'react';
 import React from 'react';
 import './App.css';
-import Header from './Header.js';
-import HangmanFigure from './HangmanFigure';
-import Alphabet from './Alphabet';
+import PlayBtn from './components/PlayBtn.js';
+import HangmanFigure from './components/HangmanFigure';
+import Alphabet from './components/Alphabet';
+import Message from './components/Message';
+import Categories from './components/Categories';
+
 
 function App() {
+  //const[gameActive, setGameActive] = useState(false);
+  const [isActive, setActive] = useState(false);
+  const [alphabet, setAlphabet] = useState(false);
+  const [choosenWord, setChoosenWord] = useState(null);
+  
+  if (isActive) {
+    console.log("active is game hmm");
+  }
+
   return (
     <>
-    <Header />
+    <PlayBtn setActive={setActive} isActive={isActive}/>
+    <Categories isActive={isActive} setAlphabet={setAlphabet} alphabet={alphabet} 
+    choosenWord={choosenWord} setChoosenWord={setChoosenWord}/>
+
+    <Message />
     <HangmanFigure />
-    <Alphabet />
+    {alphabet && <Alphabet choosenWord={choosenWord}/>}
     </>
   );
 }
+
+//DB https://swapi.dev/
 
 export default App;
