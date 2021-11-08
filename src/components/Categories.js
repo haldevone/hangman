@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { choosenword } from '../redux/ducks/DrawCharacter';
 
 const Categories = (props) => {
 
@@ -10,30 +13,22 @@ let characters = ["LUKE", "YODA", "VADER"];
 let films = ["WHALE", "TIGER", "PANDA", "SHARK", "JAGUAR"];
 
 const{setAlphabet, alphabet} = props;
-const{setChoosenWord, choosenWord} = props;
 const[removeClass, setremoveClass] = useState(true);
 
-var randItem =[Math.floor(Math.random() * 10)];
-fetch(`https://swapi.dev/api/planets/${randItem}/:id/name`)
-        .then(res => { 
-            return res.json()})
-        .then(data => {
-            console.log(data);
-        })
+const chooseWord = useSelector((state) => state.drawcharCount.chooseWord);
+const dispach = useDispatch();
 
 
 function ChoosePlanets(){
     setTimeout(() => {
         var randItem =[Math.floor(Math.random() * 10)];
-        fetch(`https://swapi.dev/api/planets/${randItem}/name`)
+        fetch(`https://swapi.dev/api/planets/${randItem}/`)
         .then(res => { 
             return res.json()})
         .then(data => {
-            setChoosenWord(data);
-        })
-        console.log("Planets choosen");
-
-        
+            dispach(choosenword(data.name));
+        }, [])
+ 
         setremoveClass(false);
         SetRemoveClass();
         SetAlphabetActive();
@@ -45,7 +40,7 @@ function ChooseCharacters(){
         console.log("Characters choosen");
         choosenCategory = characters;
         var randItem =[Math.floor(Math.random() * characters.length)];
-        setChoosenWord(characters[randItem]);
+        // setChoosenWord(characters[randItem]);
         setremoveClass(false);
         SetRemoveClass();
         SetAlphabetActive();
@@ -57,7 +52,7 @@ function ChooseFilms(){
         console.log("Films choosen");
         choosenCategory = films;
         var randItem =[Math.floor(Math.random() * films.length)];
-        setChoosenWord(films[randItem]);
+        // setChoosenWord(films[randItem]);
         setremoveClass(false);
         SetRemoveClass();
         SetAlphabetActive();

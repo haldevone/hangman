@@ -12,7 +12,7 @@ function App() {
   //const[gameActive, setGameActive] = useState(false);
   const [isActive, setActive] = useState(false);
   const [alphabet, setAlphabet] = useState(false);
-  const [choosenWord, setChoosenWord] = useState(null);
+
   
   if (isActive) {
     console.log("active is game hmm");
@@ -21,12 +21,11 @@ function App() {
   return (
     <>
     <PlayBtn setActive={setActive} isActive={isActive}/>
-    <Categories isActive={isActive} setAlphabet={setAlphabet} alphabet={alphabet} 
-    choosenWord={choosenWord} setChoosenWord={setChoosenWord}/>
+    <Categories isActive={isActive} setAlphabet={setAlphabet} alphabet={alphabet}/>
 
     <Message />
     <HangmanFigure />
-    {alphabet && <Alphabet choosenWord={choosenWord}/>}
+    {alphabet && <Alphabet />}
     </>
   );
 }

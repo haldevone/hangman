@@ -17,21 +17,23 @@ const Alphabet = (props) => {
     const[wordArray, setWordArray] = useState([]);
     const[initWordList, setInitWordList] = useState(false);
     
-    const wrongGuesses = useSelector((state) => state.drawcharCount.drawNr); //REDUX store bind variabel
-    const rightGuesses = useSelector((state) => state.drawcharCount.rightNr);
+    const wrongGuesses = useSelector((state) => state.drawcharCount.drawNr);
+    const rightGuesses = useSelector((state) => state.drawcharCount.rightNr); //REDUX store bind variabel
+    const word = useSelector((state) => state.drawcharCount.choosenWord);
+
     const dispach = useDispatch(); //Redux store sets the variabel
 
-    let word = useRef(""); //Since React Rerenders this page triggered by useState, The local var gets lost, useRef saves the current state
-    let letter;
+    //let word = useRef(""); //Since React Rerenders this page triggered by useState, The local var gets lost, useRef saves the current state
+
     let choosenWordSplit = useRef(null);
     let maxGuesses = useRef(7);
     let nrOfLetters = useRef(0);
     let wordList = [];
 
-    useEffect(()=>{ SetUpWord(props.choosenWord) }, []);
+    useEffect(()=>{ SetUpWord() }, []);
 
-    function SetUpWord(item){
-        word.current = item; //useRef .current gets sets values
+    function SetUpWord(){
+        // word.current = item; //useRef .current gets sets values
         console.log(word);
         choosenWordSplit.current = word.current.split('');
         nrOfLetters.current = choosenWordSplit.current.length;

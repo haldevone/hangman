@@ -1,5 +1,6 @@
 const WRONGGUESS = "wrongguess";
 const RIGHTGUESS = "rightguess";
+const CHOOSENWORD = "choosenword";
 
 export const wrongguess = () => ({
     type: WRONGGUESS
@@ -8,10 +9,14 @@ export const wrongguess = () => ({
 export const rightguess = () => ({
     type: RIGHTGUESS
 });
+export const choosenword = () => ({
+    type: CHOOSENWORD
+});
 
 const initState = {
     drawNr: 1,
-    rightNr: 1
+    rightNr: 1,
+    chosenWORD: ""
 };
 
 
@@ -21,6 +26,8 @@ export default (state = initState, action) => {
             return {...state, drawNr: state.drawNr +1};
         case RIGHTGUESS:
             return {...state, rightNr: state.rightNr +1};
+        case CHOOSENWORD:
+            return {...state, chosenWORD: state.chosenWORD};
         default:
             return state;
     }
