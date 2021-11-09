@@ -9,8 +9,9 @@ export const wrongguess = () => ({
 export const rightguess = () => ({
     type: RIGHTGUESS
 });
-export const choosenword = () => ({
-    type: CHOOSENWORD
+export const choosenword = (a) => ({
+    type: CHOOSENWORD,
+    payload: a
 });
 
 const initState = {
@@ -27,7 +28,7 @@ export default (state = initState, action) => {
         case RIGHTGUESS:
             return {...state, rightNr: state.rightNr +1};
         case CHOOSENWORD:
-            return {...state, chosenWORD: state.chosenWORD};
+            return {...state, chosenWORD: state.payload};
         default:
             return state;
     }

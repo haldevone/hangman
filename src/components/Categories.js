@@ -18,6 +18,8 @@ const[removeClass, setremoveClass] = useState(true);
 const chooseWord = useSelector((state) => state.drawcharCount.chooseWord);
 const dispach = useDispatch();
 
+dispach(choosenword("Test"));
+console.log(chooseWord);
 
 function ChoosePlanets(){
     setTimeout(() => {
