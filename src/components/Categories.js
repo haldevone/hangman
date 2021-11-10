@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { wordReducer } from '../redux/ducks/ChoosenWordReducer';
+import { choosenword } from '../redux/ducks/ChoosenWordReducer';
 
 const Categories = (props) => {
 
@@ -15,13 +15,10 @@ let films = ["WHALE", "TIGER", "PANDA", "SHARK", "JAGUAR"];
 const{setAlphabet, alphabet} = props;
 const[removeClass, setremoveClass] = useState(true);
 
-const chooseWord = useSelector((state) => state.drawcharCount.CHOOSENWORD);
+//const chooseWord = useSelector((state) => state.choword.chosenWORD);
 const dispach = useDispatch();
 
-useEffect(()=>{
-    dispach(wordReducer("Test"));
-    console.log(chooseWord);
-},[]);
+
 
 
 function ChoosePlanets(){
@@ -32,11 +29,12 @@ function ChoosePlanets(){
             return res.json()})
         .then(data => {
             dispach(choosenword(data.name));
+            setremoveClass(false);
+            SetRemoveClass();
+            SetAlphabetActive();
         }, [])
  
-        setremoveClass(false);
-        SetRemoveClass();
-        SetAlphabetActive();
+
     }, 400);
 }
 

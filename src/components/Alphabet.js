@@ -19,7 +19,7 @@ const Alphabet = (props) => {
     
     const wrongGuesses = useSelector((state) => state.drawcharCount.drawNr);
     const rightGuesses = useSelector((state) => state.drawcharCount.rightNr); //REDUX store bind variabel
-    const word = useSelector((state) => state.drawcharCount.choosenWord);
+    const word = useSelector((state) => state.choword.chosenWORD);
 
     const dispach = useDispatch(); //Redux store sets the variabel
 
@@ -34,8 +34,11 @@ const Alphabet = (props) => {
 
     function SetUpWord(){
         // word.current = item; //useRef .current gets sets values
-        console.log(word);
-        choosenWordSplit.current = word.current.split('');
+        choosenWordSplit.current = word.toUpperCase();
+        console.log(choosenWordSplit);
+
+        choosenWordSplit.current = word.split('');
+        // const showor = choosenWordSplit.map(l => l.toUpperCase());
         nrOfLetters.current = choosenWordSplit.current.length;
         SetUpEmptyWordList(nrOfLetters.current);
     }
@@ -66,6 +69,7 @@ const Alphabet = (props) => {
 
     function CheckLetter(id){
         let newGuess = 0;
+        console.log(choosenWordSplit);
          for (let i = 0; i < choosenWordSplit.current.length; i++) {
             if (choosenWordSplit.current[i] === id) {
                 wordArray[i] = id;
