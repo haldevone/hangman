@@ -1,5 +1,26 @@
 .message{
-    text-align: center;
+    position: relative;
+}
+
+.message-wrapper{
+    right: 0;
+    left: 0;
+    top: -490px;
+    position: absolute;
+}
+
+.message-list{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+
+    margin-top: 1rem;
+}
+
+.rightWord{
+    color: green;
+    padding-left: 1rem;
+    margin: 0;
 }
 
 .hide{

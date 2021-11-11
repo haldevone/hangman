@@ -7,10 +7,6 @@ import { choosenword } from '../redux/ducks/ChoosenWordReducer';
 const Categories = (props) => {
 
 let categoryClass = "categories remove";
-let choosenCategory;
-
-let characters = ["LUKE", "YODA", "VADER"];
-let films = ["WHALE", "TIGER", "PANDA", "SHARK", "JAGUAR"];
 
 const{setAlphabet, alphabet} = props;
 const[removeClass, setremoveClass] = useState(true);
@@ -22,9 +18,21 @@ const dispach = useDispatch();
 
 
 function ChoosePlanets(){
+    SetUpAPI("planets", 12);
+}
+
+function ChooseCharacters(){
+    SetUpAPI("people", 30);
+}
+
+function ChooseSpecies(){
+    SetUpAPI("species", 29);
+}
+
+function SetUpAPI(category, total){
     setTimeout(() => {
-        var randItem =[Math.floor(Math.random() * 10)];
-        fetch(`https://swapi.dev/api/planets/${randItem}/`)
+        var randItem =[Math.floor(Math.random() * total)];
+        fetch(`https://swapi.dev/api/${category}/${randItem}/`)
         .then(res => { 
             return res.json()})
         .then(data => {
@@ -33,33 +41,7 @@ function ChoosePlanets(){
             SetRemoveClass();
             SetAlphabetActive();
         }, [])
- 
-
-    }, 400);
-}
-
-function ChooseCharacters(){
-    setTimeout(() => {
-        console.log("Characters choosen");
-        choosenCategory = characters;
-        var randItem =[Math.floor(Math.random() * characters.length)];
-        // setChoosenWord(characters[randItem]);
-        setremoveClass(false);
-        SetRemoveClass();
-        SetAlphabetActive();
-    }, 400);
-}
-
-function ChooseFilms(){
-    setTimeout(() => {
-        console.log("Films choosen");
-        choosenCategory = films;
-        var randItem =[Math.floor(Math.random() * films.length)];
-        // setChoosenWord(films[randItem]);
-        setremoveClass(false);
-        SetRemoveClass();
-        SetAlphabetActive();
-    }, 400);  
+    }, 600);
 }
 
 
@@ -90,7 +72,7 @@ if (props.isActive) {
                 <div className="categories-flex">
                 <button onClick={ChoosePlanets} className="category-btn">Planets</button>
                 <button onClick={ChooseCharacters} className="category-btn">Characters</button>
-                <button onClick={ChooseFilms} className="category-btn">Films</button>
+                <button onClick={ChooseSpecies} className="category-btn">Species</button>
                 </div>
             </div>
         </div>

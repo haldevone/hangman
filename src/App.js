@@ -4,7 +4,6 @@ import './App.css';
 import PlayBtn from './components/PlayBtn.js';
 import HangmanFigure from './components/HangmanFigure';
 import Alphabet from './components/Alphabet';
-import Message from './components/Message';
 import Categories from './components/Categories';
 
 
@@ -23,7 +22,6 @@ function App() {
     <PlayBtn setActive={setActive} isActive={isActive}/>
     <Categories isActive={isActive} setAlphabet={setAlphabet} alphabet={alphabet}/>
 
-    <Message />
     <HangmanFigure />
     {alphabet && <Alphabet />}
     </>
