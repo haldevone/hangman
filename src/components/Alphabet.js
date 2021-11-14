@@ -36,25 +36,44 @@ const Alphabet = (props) => {
     useEffect(()=>{ SetUpWord() }, []);
 
     function SetUpWord(){
-        // word.current = item; //useRef .current gets sets values
+        //useRef .current gets sets values
+        // const newWordArray = word.filter((item) => item !== " ");
+        // const newWordArray = word.replace(/\s+/g, '');
         choosenWordSplit.current = word.toUpperCase();
         console.log(choosenWordSplit);
-
+        
         choosenWordSplit.current = word.split('');
-        // const showor = choosenWordSplit.map(l => l.toUpperCase());
         nrOfLetters.current = choosenWordSplit.current.length;
         SetUpEmptyWordList(nrOfLetters.current);
     }
 
+     const removeItem = (arr, item) => {
+         let newWordArray = [...arr];
+         const index = newWordArray.findIndex((element) => element === item);
+         if (index !== -1) {
+             newWordArray.splice(index, 1);
+             return newWordArray;
+         }
+     }
+
 
     function SetUpEmptyWordList(length){
         wordList = Array(length).fill("_");
+        let indexSpace;
+        indexSpace = choosenWordSplit.current.findIndex(item => item === " ");
+
+        if (indexSpace !== -1) {
+            wordList.splice(indexSpace, 1, " ")
+            nrOfLetters.current = (nrOfLetters.current - 1);
+        }
+       
+        console.log(`Total letters ${nrOfLetters.current}`);
         setWordArray([...wordList, wordArray]);
         setInitWordList(true);
     }
 
-    const LetterClicked = (id, props) => () => {
-        // console.log("clicked" + id);
+    const LetterClicked = (id, props) => {
+        console.log("clicked" + id);
         const clickedLetter = letters.find((item) => item === id);
         clickedLetter && setactiveId(id)
         setLetters(letters.filter((item) => item !== id));
@@ -93,7 +112,7 @@ const Alphabet = (props) => {
 
 
     return (  
-        <div>
+        <div className={"alphabet"}>
             {gameComplete ? (<Message gameWon={gameWon}/>) : (initWordList && <WordPlace wordArray={wordArray}/>)}
             <div className="letters">
                 <ul className="letters-list">
@@ -103,7 +122,7 @@ const Alphabet = (props) => {
                                 <button 
                                 key={id}
                                 className={id === activeId ? "hides" : "letter"} //id === activeId ? "hide" : ""
-                                onClick={LetterClicked(id)}
+                                onClick={() => LetterClicked(id)}
                                 >{id}
                                 </button>
                             </li>

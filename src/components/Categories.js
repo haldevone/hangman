@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { choosenword } from '../redux/ducks/ChoosenWordReducer';
+import {choosencategory} from '../redux/ducks/ChoosenWordReducer';
 
 const Categories = (props) => {
 
@@ -22,6 +23,9 @@ function ChoosePlanets(){
 }
 
 function ChooseCharacters(){
+    // if(!SetUpAPI("people", 30)){
+    //     SetUpAPI("people", 30);
+    // }
     SetUpAPI("people", 30);
 }
 
@@ -36,7 +40,13 @@ function SetUpAPI(category, total){
         .then(res => { 
             return res.json()})
         .then(data => {
+            // data.name.forEach(element => {
+            //     if (element === "-") {
+            //         return false;
+            //     }
+            // });
             dispach(choosenword(data.name));
+            dispach(choosencategory(category));
             setremoveClass(false);
             SetRemoveClass();
             SetAlphabetActive();
@@ -44,6 +54,9 @@ function SetUpAPI(category, total){
     }, 600);
 }
 
+// function CallAPIAgain(){
+//     SetUpAPI(category, total);
+// }
 
 function SetRemoveClass(){
     console.log("Remove class");

@@ -1,8 +1,14 @@
 .hang-img{
     width: 100%;
     text-align: center;
+    margin-top: 12rem;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-size: 0;
 
 }
 .hang-img img{
     width: 600px;
+
+
 }

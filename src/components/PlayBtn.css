@@ -6,23 +6,31 @@
 
 }
 
+.play{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 13rem;
+}
+
 .play-btn{
     border-radius: 12px;
     font-size: 3rem;
-    margin: 0;
     border: 0;
-    color: #000;
+    max-width: 200px;
+    color: var(--color-text);
     background-color: #fff000;
+    box-shadow: 0 0 0 3px rgba(173, 163, 13, 0.603);
     cursor: pointer;
-    font-weight: bold;
-    padding: 10px 15px;
+    font-family: starwars;
+    padding: 15px 15px;
     transition: 200ms;
 }
 .play-btn:hover,.category-btn:hover,
 .play-btn:focus, .category-btn:focus {
   outline: 2;
   background: rgb(255, 245, 65);
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.486);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.603);
 }
 .play-btn:active, .category-btn:active{
     transform: scale(0.9);
@@ -52,13 +60,25 @@
   font-size: 2rem;
   margin: 0.5rem;
   border: 0;
-  color: #000;
+  color: var(--color-text);
   background-color: #fff000;
   cursor: pointer;
-  font-weight: bold;
+  font-family: starwars;
   padding: 10px 15px;
+  box-shadow: 0 0 0 3px rgba(141, 132, 10, 0.486);
   transition: 200ms;
 }
 
+.api-box{
+  background-color: #ddd99c;
+  border-radius: 12px;
+  margin-top: 25rem;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.603);
+  text-align: center;
+}
+
+.api-box h2{
+  padding: 1rem 0.5rem;
+}
 
 

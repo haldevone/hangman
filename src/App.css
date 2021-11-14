@@ -1,5 +1,68 @@
+@font-face {
+  font-family: starwars;
+  src: url(./Fonts/SWdistand.ttf);
+  font-style: normal;
+  font-weight: 100;
+}
+
+:root{
+  --color-text: rgb(53, 45, 21);
+}
+
+body{
+  background-color: rgb(198, 239, 255);
+  font-family: starwars;
+  letter-spacing: 2px;
+  font-weight: 100;
+  color: var(--color-text);
+}
+
 .App {
   text-align: center;
 }
 
+.background{
+  position: absolute;
+  top: 32.5rem;
+  background-color: #c38b1e;
+  width: 100%;
+  height: 445px;
+  z-index: -10;
+}
 
+.sun-one img, .sun-two img{
+  width: 100%;
+}
+
+.sun-one{
+  position: absolute;
+  top: -25rem;
+  right: 20rem;
+  width: 12%;
+}
+
+.sun-two{
+  position: absolute;
+  top: -33rem;
+  right: 0rem;
+  width: 18%;
+}
+
+
+.mountain-two img, .mountain img{
+  width: 100%;
+}
+
+.mountain{
+  position: absolute;
+  top: -12rem;
+  left: 0.5rem;
+  width: 25%;
+}
+
+.mountain-two{
+  position: absolute;
+  top: -14rem;
+  right: 0rem;
+  width: 30%;
+}

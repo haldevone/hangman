@@ -24,3 +24,8 @@
     color: rgb(75, 83, 27);
     font-weight: bold;
 }
+
+.current-category{
+    text-align: center;
+    text-transform: capitalize;
+}

@@ -5,6 +5,7 @@ import PlayBtn from './components/PlayBtn.js';
 import HangmanFigure from './components/HangmanFigure';
 import Alphabet from './components/Alphabet';
 import Categories from './components/Categories';
+import Background from './components/Background';
 
 
 function App() {
@@ -23,7 +24,9 @@ function App() {
     <Categories isActive={isActive} setAlphabet={setAlphabet} alphabet={alphabet}/>
 
     <HangmanFigure />
+    <Background/>
     {alphabet && <Alphabet />}
+    
     </>
   );
 }

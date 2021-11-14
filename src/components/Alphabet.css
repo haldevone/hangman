@@ -2,11 +2,18 @@
     --fs-h1: 3rem;
 
     --color-primary: rgb(238, 238, 238);
+
 }
+
+/* .alphabet{
+    position: absolute;
+    background-color: #c38b1e;
+} */
 
 .letters{
     max-width: 700px;
     margin: 0 auto;
+    
 }
 .letters-list{
     list-style-type: none;
@@ -20,7 +27,7 @@
 }
 
 .letter{
-    padding: 5px 5px;
+    padding: 8px 8px;
     border-radius: 15px;
     width: 100%;
     margin: 0;
@@ -28,7 +35,8 @@
     font-size: var(--fs-h1);
     background-color: #fff000;
     cursor: pointer;
-    font-weight: bold;
+    font-family: starwars;
+    color: var(--color-text);
     transition: 100ms;
 }
 
@@ -39,7 +47,7 @@
 }
 
 .letter:active{
-    transform: scale(0.5);
+    /* transform: scale(0.5); */
     background: rgb(219, 208, 0);
 }
 
