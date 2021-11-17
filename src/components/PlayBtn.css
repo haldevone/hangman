@@ -1,7 +1,13 @@
+
+.play-head{
+  position: relative;
+  margin-top: 10rem;
+}
+
 .title-container{
     position: absolute;
     left: 50%;
-    top: 30%;
+    top: 50%;
     transform: translate(-50%, -50%);
 
 }
@@ -10,7 +16,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 13rem;
+  margin-top: 15rem;
 }
 
 .play-btn{
@@ -18,9 +24,9 @@
     font-size: 3rem;
     border: 0;
     max-width: 200px;
-    color: var(--color-text);
-    background-color: #fff000;
-    box-shadow: 0 0 0 3px rgba(173, 163, 13, 0.603);
+    color: var(--color-text-light);
+    background-color: var(--color-button);
+    box-shadow: 0 0 0 3px rgba(128, 128, 129, 0.603);
     cursor: pointer;
     font-family: starwars;
     padding: 15px 15px;
@@ -29,12 +35,12 @@
 .play-btn:hover,.category-btn:hover,
 .play-btn:focus, .category-btn:focus {
   outline: 2;
-  background: rgb(255, 245, 65);
+  background: var(--color-button-selected);
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.603);
 }
 .play-btn:active, .category-btn:active{
     transform: scale(0.9);
-    background: rgb(219, 208, 0);
+    background: var(--color-button-selected);
 }
 
 .categories{
@@ -61,18 +67,19 @@
   margin: 0.5rem;
   border: 0;
   color: var(--color-text);
-  background-color: #fff000;
+  background-color: var(--color-button);
+  color: var(--color-text-light);
   cursor: pointer;
   font-family: starwars;
-  padding: 10px 15px;
-  box-shadow: 0 0 0 3px rgba(141, 132, 10, 0.486);
+  padding: 15px 15px;
+  box-shadow: 0 0 0 3px rgba(128, 128, 129, 0.603);
   transition: 200ms;
 }
 
 .api-box{
-  background-color: #ddd99c;
-  border-radius: 12px;
-  margin-top: 25rem;
+  background-color: #CFD5DE;
+
+  margin-top: 8rem;
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.603);
   text-align: center;
 }
@@ -81,4 +88,22 @@
   padding: 1rem 0.5rem;
 }
 
+@media screen and (max-width:780px) {
+    .play-btn{
+      font-size: 1.8rem;
+  }
+  .api-box h2, .api-box h1{
+    font-size: 1.2rem;
+  }
+  .categories-flex{
+    flex-direction: column;
+  }
+  .category-btn{
+    font-size: 1.7rem;
+  }
+  .categories-wrapper{
+    top: -50px;
+    width: 240px;
+  }
+}
 

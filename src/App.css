@@ -6,7 +6,10 @@
 }
 
 :root{
-  --color-text: rgb(53, 45, 21);
+  --color-text: #252422;
+  --color-text-light: #CFD5DE;
+  --color-button: #3C3E3E;
+  --color-button-selected: #5e5f5f;
 }
 
 body{
@@ -55,14 +58,39 @@ body{
 
 .mountain{
   position: absolute;
-  top: -12rem;
+  top: -6rem;
   left: 0.5rem;
   width: 25%;
 }
 
 .mountain-two{
   position: absolute;
-  top: -14rem;
+  top: -6rem;
   right: 0rem;
   width: 30%;
+}
+
+@media only screen and (max-width: 1250px){
+  .mountain{
+    width: 20%;
+    top: -4rem;
+  }
+  .mountain-two{
+    top: -3rem;
+    width: 20%;
+  }
+}
+
+@media only screen and (max-width: 980px){
+  .mountain{
+    display: none;
+  }
+  .mountain-two{
+    display: none;
+  }
+  .sun-one{
+    position: absolute;
+    top: -29rem;
+    right: 9rem;
+  }
 }

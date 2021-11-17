@@ -4,14 +4,12 @@ import { useState } from 'react';
 import WordPlace from './WordPlace';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { rightguess, wrongguess } from '../redux/ducks/DrawCharacter';
 import Message from './Message';
+import HangmanFigure from './HangmanFigure';
 
 
 const Alphabet = (props) => {
 
-    //  const letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M",
-    //                 "N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     const [activeId, setactiveId] = useState(null);
     const [letters, setLetters] = useState(["A","B","C","D","E","F","G","H","I","J","K","L","M",
     "N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]);
@@ -19,10 +17,12 @@ const Alphabet = (props) => {
     const[initWordList, setInitWordList] = useState(false);
     const[gameComplete, setGameComplete] = useState(false);
     const[gameWon, setGameWon] = useState(false);
+    const[countWrong, setCountWrong] = useState(0);
+    const[countRight, setCountRight] = useState(0);
     
-    const wrongGuesses = useSelector((state) => state.drawcharCount.drawNr);
-    const rightGuesses = useSelector((state) => state.drawcharCount.rightNr); //REDUX store bind variabel
-    const word = useSelector((state) => state.choword.chosenWORD);
+    // const wrongGuesses = useSelector((state) => state.drawcharCount.drawNr);
+    // const rightGuesses = useSelector((state) => state.drawcharCount.rightNr); 
+    const word = useSelector((state) => state.choword.chosenWORD); //REDUX store bind variabel
 
     const dispach = useDispatch(); //Redux store sets the variabel
 
@@ -30,15 +30,17 @@ const Alphabet = (props) => {
 
     let choosenWordSplit = useRef(null);
     let maxGuesses = useRef(7);
-    let nrOfLetters = useRef(0);
+    let nrOfLetters = useRef(-1);
     let wordList = [];
 
-    useEffect(()=>{ SetUpWord() }, []);
+    useEffect(()=>{ props.alphabet && SetUpWord() }, [props.alphabet]);
+
+    useEffect(() => {
+        CheckWin();
+    }, [countWrong, countRight])
 
     function SetUpWord(){
         //useRef .current gets sets values
-        // const newWordArray = word.filter((item) => item !== " ");
-        // const newWordArray = word.replace(/\s+/g, '');
         choosenWordSplit.current = word.toUpperCase();
         console.log(choosenWordSplit);
         
@@ -73,7 +75,6 @@ const Alphabet = (props) => {
     }
 
     const LetterClicked = (id, props) => {
-        console.log("clicked" + id);
         const clickedLetter = letters.find((item) => item === id);
         clickedLetter && setactiveId(id)
         setLetters(letters.filter((item) => item !== id));
@@ -81,17 +82,26 @@ const Alphabet = (props) => {
     }
 
     function CheckWin(){
-        console.log(wrongGuesses);
-        if (wrongGuesses >= maxGuesses.current) {
-            console.log("GAME LOST :(");
-            setGameComplete(true);
-            setGameWon(false);
-        }
-        if (rightGuesses === nrOfLetters.current) {
+        // console.log(`Wrong Guesses ${countWrong} total ${maxGuesses.current}`);
+        console.log(`Right Guesses ${countRight} total ${nrOfLetters.current}`);
+        if (countRight === nrOfLetters.current) {
             console.log("GAME WON!!!!");
             setGameComplete(true);
             setGameWon(true);
         }
+        if (countWrong >= maxGuesses.current) {
+            console.log("GAME LOST :(");
+            setGameComplete(true);
+            setGameWon(false);
+        }
+    }
+
+    const handleWrongGuess = () => {
+        setCountWrong(countWrong +1);
+    }
+
+    const handleRightGuess = (nr) => {
+        setCountRight(countRight + nr);
     }
 
     function CheckLetter(id){
@@ -100,21 +110,23 @@ const Alphabet = (props) => {
             if (choosenWordSplit.current[i].toUpperCase() === id) {
                 wordArray[i] = id;
                 newGuess ++;
-                dispach(rightguess());
             }         
          }
-         if (newGuess == 0) {
-            dispach(wrongguess());
+         if (newGuess === 0) {
+            console.log("Dispach WRONG");
+            handleWrongGuess();
+         }else if (newGuess > 0) {
+            handleRightGuess(newGuess);
          }
-
-         CheckWin();
     }
 
 
     return (  
         <div className={"alphabet"}>
             {gameComplete ? (<Message gameWon={gameWon}/>) : (initWordList && <WordPlace wordArray={wordArray}/>)}
-            <div className="letters">
+            <HangmanFigure countWrong={countWrong}/>
+            {props.alphabet && (!gameComplete && 
+                <div className="letters">
                 <ul className="letters-list">
                     {letters.map((id) =>{
                         return(
@@ -130,6 +142,7 @@ const Alphabet = (props) => {
                     })}
                 </ul>
             </div>
+            )}
         </div>
     );
 }

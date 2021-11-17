@@ -12,3 +12,21 @@
 
 
 }
+
+@media screen and (max-width:600px) {
+    .hang-img img{
+        width: 450px;
+    }
+    .hang-img{
+        margin-top: 17rem;
+    }
+}
+
+@media screen and (max-width:450px) {
+    .hang-img img{
+        width: 350px;
+    }
+    .hang-img{
+        margin-top: 20.5rem;
+    }
+}

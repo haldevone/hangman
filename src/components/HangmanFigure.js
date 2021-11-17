@@ -11,32 +11,28 @@ import img8 from "../images/hang8.png";
 import "./HangmanFigure.css";
 
 
-export const HangmanFigure = () => {
-
-    const wrongGuesses = useSelector((state) => state.drawcharCount.drawNr);
+export const HangmanFigure = (props) => {
 
     function ShowImage(){
-        switch (wrongGuesses) {
+        switch (props.countWrong) {
             case 0:
                 return img1
             case 1:
-                return img1
-            case 2:
                 return img2
-            case 3:
+            case 2:
                 return img3
-            case 4:
+            case 3:
                 return img4
-            case 5:
+            case 4:
                 return img5
-            case 6:
+            case 5:
                 return img6
-            case 7:
+            case 6:
                 return img7
-            case 8:
+            case 7:
                 return img8
             default:
-                return img8
+                return img1
         }
     }
 

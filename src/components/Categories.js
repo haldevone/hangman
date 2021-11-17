@@ -8,6 +8,7 @@ import {choosencategory} from '../redux/ducks/ChoosenWordReducer';
 const Categories = (props) => {
 
 let categoryClass = "categories remove";
+let clickedCategory;
 
 const{setAlphabet, alphabet} = props;
 const[removeClass, setremoveClass] = useState(true);
@@ -19,47 +20,74 @@ const dispach = useDispatch();
 
 
 function ChoosePlanets(){
-    SetUpAPI("planets", 12);
+    clickedCategory = "planets";
+    SetUpAPI("planets", 50);
 }
 
 function ChooseCharacters(){
-    // if(!SetUpAPI("people", 30)){
-    //     SetUpAPI("people", 30);
-    // }
-    SetUpAPI("people", 30);
+    clickedCategory = "people";
+    SetUpAPI("people", 80);
 }
 
 function ChooseSpecies(){
-    SetUpAPI("species", 29);
+    clickedCategory = "species";
+    SetUpAPI("species", 35);
 }
 
 function SetUpAPI(category, total){
     setTimeout(() => {
         var randItem =[Math.floor(Math.random() * total)];
-        fetch(`https://swapi.dev/api/${category}/${randItem}/`)
+         fetch(`https://swapi.dev/api/${category}/${randItem}/`)
         .then(res => { 
             return res.json()})
         .then(data => {
-            // data.name.forEach(element => {
-            //     if (element === "-") {
-            //         return false;
-            //     }
-            // });
-            dispach(choosenword(data.name));
-            dispach(choosencategory(category));
-            setremoveClass(false);
-            SetRemoveClass();
-            SetAlphabetActive();
+            console.log(data.name);
+            if (data.name == "undefined" || data.name == "UNDEFINED") {
+                CallFunctionAgain();
+            }
+            if (hasNumbers(data.name) || hasSpecialCharacters(data.name)) {
+                CallFunctionAgain();
+            }else{
+                // let word = data.name;
+                // word = word.replace("-", "");
+                dispach(choosenword(data.name));
+                dispach(choosencategory(category));
+                setremoveClass(false);
+                SetRemoveClass();
+                SetAlphabetActive();
+            }
         }, [])
     }, 600);
 }
 
-// function CallAPIAgain(){
-//     SetUpAPI(category, total);
-// }
+function CallFunctionAgain(){
+    switch (clickedCategory) {
+        case "planets":
+            ChoosePlanets();
+            break;
+        case "people":
+            ChooseCharacters();
+            break;
+        case "species":
+            ChooseSpecies();
+            break;
+        default:
+            ChoosePlanets();
+            break;
+    }
+}
+
+function hasNumbers(t){
+    var regex = /\d/g;
+    return regex.test(t);
+} 
+
+function hasSpecialCharacters(t){
+    let spChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+    return spChar.test(t);
+} 
 
 function SetRemoveClass(){
-    console.log("Remove class");
     if (removeClass) {
         categoryClass = "categories";
     }else{
@@ -71,11 +99,9 @@ function SetAlphabetActive(){
     setAlphabet(true);
 }
 
-if (props.isActive) {
-    //setremoveClass(false);
-    console.log("props ran");
+ if (props.isActive) {
     SetRemoveClass();
-}
+ }
 
 
 

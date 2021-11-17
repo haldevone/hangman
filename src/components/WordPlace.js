@@ -22,8 +22,8 @@ const WordPlace = (items) => {
 
     return ( 
         <div className="wordplace">
-            <h2 className={"current-category"}>{`Current Category: ${category}`}</h2>
             <div className="wordplace-wrapper">
+            <h2 className={"current-category"}>{`Current Category: ${category}`}</h2>
                 {SetUpPlaceList()}
             </div>
         </div>

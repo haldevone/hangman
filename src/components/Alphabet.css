@@ -33,22 +33,22 @@
     margin: 0;
     text-decoration: none;
     font-size: var(--fs-h1);
-    background-color: #fff000;
+    background-color: var(--color-button);
+    color: var(--color-text-light);
     cursor: pointer;
     font-family: starwars;
-    color: var(--color-text);
     transition: 100ms;
 }
 
 .letter:hover{
     outline: 2;
-    background: rgb(253, 248, 141);
+    background: var(--color-button-selected);
     box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.486);
 }
 
 .letter:active{
     /* transform: scale(0.5); */
-    background: rgb(219, 208, 0);
+    background: rgb(190, 190, 190);
 }
 
 .hide{
@@ -61,4 +61,22 @@
 
 .remove{
     display: none;
+}
+
+@media screen and (max-width:900px) {
+    .letter{
+        font-size: 2.8rem;
+    }
+    .letters{
+        max-width: 500px;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .letter{
+        font-size: 1.8rem;
+    }
+    .letters{
+        max-width: 330px;
+    }
 }

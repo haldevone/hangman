@@ -18,11 +18,15 @@ export const PlayBtn = (props) => {
     }
 
     return (
-        <div className={`play ${titleClass}`}>
-            <button onClick={ActivateGame} className="play-btn">PLAY</button>
-            <div className={"api-box"}>
-                <h1>Hangman</h1>
-                <h2>With Star Wars API</h2>
+        <div className={"play-head"}>
+            <div className={titleClass}>
+                <div className={"play"}>
+                    <button onClick={ActivateGame} className="play-btn">PLAY</button>
+                    <div className={"api-box"}>
+                        <h1>Hangman</h1>
+                        <h2>With Star Wars API</h2>
+                    </div>
+                </div>
             </div>
         </div>
     )

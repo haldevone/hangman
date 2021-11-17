@@ -6,6 +6,10 @@ const Message = (props) => {
 
     const rightWord = useSelector((state) => state.choword.chosenWORD);
 
+    function PageRefresh(){
+        window.location.reload(true);
+    }
+
     return (  
         <div className="message">
             <div className={"message-wrapper"}>
@@ -14,6 +18,7 @@ const Message = (props) => {
                 <h1 className={"message-list"} style={props.gameWon ? {color:"green"} : {color:"red"}}>
                     {props.gameWon ? 'YOU WON!' : 'GAME OVER'}
                 </h1>
+                <div className={"retry"}><i onClick={() => PageRefresh()} class="fas fa-redo-alt fa-5x"></i></div>
             </div>
         </div>
     );
