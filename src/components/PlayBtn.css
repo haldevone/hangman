@@ -78,7 +78,7 @@
 
 .api-box{
   background-color: #CFD5DE;
-
+  border-radius: 10px;
   margin-top: 8rem;
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.603);
   text-align: center;
