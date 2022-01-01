@@ -3,7 +3,6 @@ import './Alphabet.css'
 import { useState } from 'react';
 import WordPlace from './WordPlace';
 import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
 import Message from './Message';
 import HangmanFigure from './HangmanFigure';
 
@@ -20,13 +19,8 @@ const Alphabet = (props) => {
     const[countWrong, setCountWrong] = useState(0);
     const[countRight, setCountRight] = useState(0);
     
-    // const wrongGuesses = useSelector((state) => state.drawcharCount.drawNr);
-    // const rightGuesses = useSelector((state) => state.drawcharCount.rightNr); 
     const word = useSelector((state) => state.choword.chosenWORD); //REDUX store bind variabel
 
-    const dispach = useDispatch(); //Redux store sets the variabel
-
-    //let word = useRef(""); //Since React Rerenders this page triggered by useState, The local var gets lost, useRef saves the current state
 
     let choosenWordSplit = useRef(null);
     let maxGuesses = useRef(7);
@@ -48,16 +42,6 @@ const Alphabet = (props) => {
         nrOfLetters.current = choosenWordSplit.current.length;
         SetUpEmptyWordList(nrOfLetters.current);
     }
-
-     const removeItem = (arr, item) => {
-         let newWordArray = [...arr];
-         const index = newWordArray.findIndex((element) => element === item);
-         if (index !== -1) {
-             newWordArray.splice(index, 1);
-             return newWordArray;
-         }
-     }
-
 
     function SetUpEmptyWordList(length){
         wordList = Array(length).fill("_");
@@ -82,7 +66,6 @@ const Alphabet = (props) => {
     }
 
     function CheckWin(){
-        // console.log(`Wrong Guesses ${countWrong} total ${maxGuesses.current}`);
         console.log(`Right Guesses ${countRight} total ${nrOfLetters.current}`);
         if (countRight === nrOfLetters.current) {
             console.log("GAME WON!!!!");

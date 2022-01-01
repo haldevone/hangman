@@ -49,6 +49,9 @@
 .fa-redo-alt:hover{
     transform: scale(1.1);
 }
+.fa-redo-alt:active{
+    transform: scale(0.9);
+}
 
 
 /* POP UP ANIM */

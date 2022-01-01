@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
 import { useState } from "react";
-import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { choosenword } from '../redux/ducks/ChoosenWordReducer';
 import {choosencategory} from '../redux/ducks/ChoosenWordReducer';
@@ -10,8 +8,9 @@ const Categories = (props) => {
 let categoryClass = "categories remove";
 let clickedCategory;
 
-const{setAlphabet, alphabet} = props;
+const{setAlphabet} = props;
 const[removeClass, setremoveClass] = useState(true);
+const[loading, setLoading] = useState(false);
 
 //const chooseWord = useSelector((state) => state.choword.chosenWORD);
 const dispach = useDispatch();
@@ -36,13 +35,14 @@ function ChooseSpecies(){
 
 function SetUpAPI(category, total){
     setTimeout(() => {
+        setLoading(true);
         var randItem =[Math.floor(Math.random() * total)];
          fetch(`https://swapi.dev/api/${category}/${randItem}/`)
         .then(res => { 
             return res.json()})
         .then(data => {
             console.log(data.name);
-            if (data.name == "undefined" || data.name == "UNDEFINED") {
+            if (data.name === "undefined" || data.name === "UNDEFINED") {
                 CallFunctionAgain();
             }
             if (hasNumbers(data.name) || hasSpecialCharacters(data.name)) {
@@ -56,8 +56,9 @@ function SetUpAPI(category, total){
                 SetRemoveClass();
                 SetAlphabetActive();
             }
+            setLoading(false);
         }, [])
-    }, 600);
+    }, 300);
 }
 
 function CallFunctionAgain(){
@@ -108,11 +109,13 @@ function SetAlphabetActive(){
     return ( 
         <div className={categoryClass}>
             <div className="categories-wrapper">
+            {!loading && 
                 <div className="categories-flex">
-                <button onClick={ChoosePlanets} className="category-btn">Planets</button>
-                <button onClick={ChooseCharacters} className="category-btn">Characters</button>
-                <button onClick={ChooseSpecies} className="category-btn">Species</button>
+                    <button onClick={ChoosePlanets} className="category-btn">Planets</button>
+                    <button onClick={ChooseCharacters} className="category-btn">Characters</button>
+                    <button onClick={ChooseSpecies} className="category-btn">Species</button>
                 </div>
+            }
             </div>
         </div>
        

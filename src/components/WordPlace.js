@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+
 import "./WordPlace.css";
 import { useSelector } from "react-redux";
 

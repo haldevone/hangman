@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import img1 from "../images/hang0.png";
 import img2 from "../images/hang1.png";
 import img3 from "../images/hang2.png";

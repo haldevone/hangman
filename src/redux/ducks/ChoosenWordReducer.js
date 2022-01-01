@@ -15,7 +15,7 @@ export const choosencategory = (newValue) => ({
      chosenWORD: "",
      choosenCAT: ""
  }
- export default (state = initState, action) => {
+ const ChoosenWordReducer = (state = initState, action) => {
      switch (action.type) {
         case CHOOSENWORD:
             return {...state, chosenWORD: `${action.payload}`};
@@ -23,6 +23,6 @@ export const choosencategory = (newValue) => ({
             return {...state, choosenCAT: `${action.payload}`};
          default:
              return state;
-             console.log(state);
      }
  }
+ export default ChoosenWordReducer
