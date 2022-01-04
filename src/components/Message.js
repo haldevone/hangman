@@ -17,7 +17,7 @@ const Message = (props) => {
             <div className={"message-wrapper"}>
                 <h2 className={"message-list"}>{"Anwser:"} 
                 <span className={"rightWord"}>{rightWord}</span></h2>
-                <h1 className={"message-list"} style={props.gameWon ? {color:"green"} : {color:"red"}}>
+                <h1 className={"message-list"} style={props.gameWon ? {color:"#fff46b"} : {color:"#efd51c"}}>
                     {props.gameWon ? 'YOU WON!' : 'GAME OVER'}
                 </h1>
                 <div className={"retry"}><i onClick={() => PageRefresh()} class="fas fa-redo-alt fa-5x"></i></div>

@@ -6,7 +6,7 @@
 .wordplace-wrapper{
     right: 0;
     left: 0;
-    top: -140px;
+    top: -160px;
     position: absolute;
 }
 
@@ -14,6 +14,7 @@
     display: flex;
     list-style: none;
     justify-content: center;
+    padding: 1rem 0;
 }
 
 .wordplace-item{
@@ -27,12 +28,13 @@
     text-align: center;
     text-transform: capitalize;
     margin: 1.5rem;
+    color: var(--color-button);
 }
 
 @media screen and (max-width:580px) {
     .wordplace-item{
         margin: 0 0.3rem;
-        font-size: 1.7rem;
+        font-size: 2rem;
     }
     .current-category{
         font-size: 1.2rem;
@@ -40,6 +42,6 @@
         margin: 0 auto;
     }
     .wordplace-wrapper{
-        top: -230px;
+        top: -140px;
     }
 }

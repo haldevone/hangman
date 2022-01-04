@@ -5,6 +5,7 @@ import WordPlace from './WordPlace';
 import { useSelector } from 'react-redux';
 import Message from './Message';
 import HangmanFigure from './HangmanFigure';
+import AnwserPopUp from './AnwserPopUp';
 
 
 const Alphabet = (props) => {
@@ -18,6 +19,7 @@ const Alphabet = (props) => {
     const[gameWon, setGameWon] = useState(false);
     const[countWrong, setCountWrong] = useState(0);
     const[countRight, setCountRight] = useState(0);
+    const[anwser, setAnwser] = useState("");
     
     const word = useSelector((state) => state.choword.chosenWORD); //REDUX store bind variabel
 
@@ -77,14 +79,17 @@ const Alphabet = (props) => {
             setGameComplete(true);
             setGameWon(false);
         }
+
     }
 
     const handleWrongGuess = () => {
         setCountWrong(countWrong +1);
+        setAnwser("WRONG");
     }
 
     const handleRightGuess = (nr) => {
         setCountRight(countRight + nr);
+        setAnwser("RIGHT");
     }
 
     function CheckLetter(id){
@@ -106,6 +111,7 @@ const Alphabet = (props) => {
 
     return (  
         <div className={"alphabet"}>
+        <AnwserPopUp anwser={anwser} />
             {gameComplete ? (<Message gameWon={gameWon}/>) : (initWordList && <WordPlace wordArray={wordArray}/>)}
             <HangmanFigure countWrong={countWrong}/>
             {props.alphabet && (!gameComplete && 

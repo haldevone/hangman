@@ -7,9 +7,10 @@
 
 :root{
   --color-text: #252422;
-  --color-text-light: #CFD5DE;
-  --color-button: #3C3E3E;
+  --color-text-light: #eaebec;
+  --color-button: #434646;
   --color-button-selected: #131313;
+  --color-anwser: #efd51c;
 }
 
 body{
@@ -29,7 +30,7 @@ body{
   top: 32.5rem;
   background-color: #c38b1e;
   width: 100%;
-  height: 445px;
+  height: 340px;
   z-index: -10;
 }
 
@@ -68,6 +69,12 @@ body{
   top: -6rem;
   right: 0rem;
   width: 30%;
+}
+
+@media only screen and (min-width: 950px){
+  .background{
+    height: 450px;
+  }
 }
 
 @media only screen and (max-width: 1250px){
