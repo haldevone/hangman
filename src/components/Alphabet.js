@@ -122,7 +122,7 @@ const Alphabet = (props) => {
                             <li key={id}>
                                 <button 
                                 key={id}
-                                className={id === activeId ? "hides" : "letter"} //id === activeId ? "hide" : ""
+                                className={id === activeId ? "hides" : "letter"}
                                 onClick={() => LetterClicked(id)}
                                 >{id}
                                 </button>

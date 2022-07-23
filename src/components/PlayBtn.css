@@ -21,7 +21,8 @@
 
 .play-btn{
     border-radius: 12px;
-    font-size: 3rem;
+    font-size: 2.4rem;
+    letter-spacing: 0.08em;
     border: 0;
     max-width: 200px;
     color: var(--color-text-light);
@@ -39,7 +40,7 @@
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.603);
 }
 .play-btn:active, .category-btn:active{
-    transform: scale(0.9);
+    transform: translateY(0.25rem) scale(0.95);
     background: var(--color-button-selected);
 }
 
@@ -63,7 +64,8 @@
 .category-btn{
   text-align: center;
   border-radius: 12px;
-  font-size: 2rem;
+  letter-spacing: 0.08em;
+  font-size: 1.8rem;
   margin: 0.5rem;
   border: 0;
   color: var(--color-text);
@@ -88,6 +90,11 @@
   padding: 1rem 0.5rem;
 }
 
+.loading-info{
+  text-align: center;
+  font-size: 1.6rem;
+}
+
 @media screen and (max-width:780px) {
     .play-btn{
       font-size: 2.3rem;
@@ -99,7 +106,7 @@
     flex-direction: column;
   }
   .category-btn{
-    font-size: 1.7rem;
+    font-size: 1.6rem;
   }
   .categories-wrapper{
     top: -50px;

@@ -1,12 +1,8 @@
-
 import "./WordPlace.css";
 import { useSelector } from "react-redux";
 
 
 const WordPlace = (items) => {
-
-    // const words = props.wordArray;
-    // useEffect(()=>{console.log(items.wordArray)},[items]);
 
     const category = useSelector((state) => state.choword.choosenCAT);
 

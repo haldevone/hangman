@@ -16,12 +16,11 @@ function App() {
 
   return (
     <>
-    <PlayBtn setActive={setActive} isActive={isActive}/>
-    <Categories isActive={isActive} setAlphabet={setAlphabet} alphabet={alphabet}/>
+      <PlayBtn setActive={setActive} isActive={isActive}/>
+      <Categories isActive={isActive} setAlphabet={setAlphabet} alphabet={alphabet}/>
 
-    <Background/>
-    <Alphabet alphabet={alphabet}/>
-    
+      <Background/>
+      <Alphabet alphabet={alphabet}/>
     </>
   );
 }

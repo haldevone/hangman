@@ -31,7 +31,7 @@ function AnwserPopUp(anwser) {
             className={classNames}
             onAnimationEnd={() => onAnimationEnd()}
             onAnimationStart={() => onAnimationStart()}>
-                <h1 style={{visibility: displayState, color:"#94781c"}}>
+                <h1 style={{visibility: displayState, color: "#cbaf54"}}>
                     {anwser.anwser}
                 </h1>
             </div>

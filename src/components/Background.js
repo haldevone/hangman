@@ -6,16 +6,16 @@ const Background = () => {
     return ( 
         <div className={"background"}>
             <div className={"sun-one"}>
-                <img src={sun} alt=""></img>
+                <img src={sun} alt="sun"></img>
             </div>
             <div className={"sun-two"}>
-                <img src={sun} alt=""></img>
+                <img src={sun} alt="sun"></img>
             </div>
             <div className={"mountain"}>
-                <img src={mountain} alt=""></img>
+                <img src={mountain} alt="mountain"></img>
             </div>
             <div className={"mountain-two"}>
-                <img src={mountain} alt=""></img>
+                <img src={mountain} alt="mountain"></img>
             </div>
         </div>
      );

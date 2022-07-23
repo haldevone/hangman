@@ -11,11 +11,7 @@ let clickedCategory;
 const{setAlphabet} = props;
 const[removeClass, setremoveClass] = useState(true);
 const[loading, setLoading] = useState(false);
-
-//const chooseWord = useSelector((state) => state.choword.chosenWORD);
 const dispach = useDispatch();
-
-
 
 
 function ChoosePlanets(){
@@ -36,20 +32,20 @@ function ChooseSpecies(){
 function SetUpAPI(category, total){
     setTimeout(() => {
         setLoading(true);
-        var randItem =[Math.floor(Math.random() * total)];
+
+        var randItem =[Math.floor(Math.random() * total)]; //Gives a random between item 0 - total
          fetch(`https://swapi.dev/api/${category}/${randItem}/`)
         .then(res => { 
             return res.json()})
         .then(data => {
             console.log(data.name);
             if (data.name === "undefined" || data.name === "UNDEFINED") {
-                CallFunctionAgain();
+                CallFunctionAgain(); //prevents undefined result
             }
             if (hasNumbers(data.name) || hasSpecialCharacters(data.name)) {
-                CallFunctionAgain();
+                CallFunctionAgain(); //prevents undefined result
             }else{
-                // let word = data.name;
-                // word = word.replace("-", "");
+
                 dispach(choosenword(data.name));
                 dispach(choosencategory(category));
                 setremoveClass(false);
@@ -109,12 +105,14 @@ function SetAlphabetActive(){
     return ( 
         <div className={categoryClass}>
             <div className="categories-wrapper">
-            {!loading && 
+            {!loading ? (
                 <div className="categories-flex">
                     <button onClick={ChoosePlanets} className="category-btn">Planets</button>
                     <button onClick={ChooseCharacters} className="category-btn">Characters</button>
                     <button onClick={ChooseSpecies} className="category-btn">Species</button>
                 </div>
+            ) : <p className="loading-info">Loading...</p>
+                
             }
             </div>
         </div>

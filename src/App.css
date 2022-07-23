@@ -6,11 +6,12 @@
 }
 
 :root{
-  --color-text: #252422;
+  --color-text: #413e37;
   --color-text-light: #eaebec;
-  --color-button: #434646;
-  --color-button-selected: #131313;
+  --color-button: #2f2e29;
+  --color-button-selected: #464337;
   --color-anwser: #efd51c;
+  --color-popup: #cbaf54;
 }
 
 body{
@@ -21,8 +22,13 @@ body{
   color: var(--color-text);
 }
 
+h1, h2, h3, h4, h5, h6, p{
+  letter-spacing: 0.08em;
+}
+
 .App {
   text-align: center;
+
 }
 
 .background{

@@ -8,6 +8,8 @@
     left: 0;
     top: -160px;
     position: absolute;
+    letter-spacing: 0.08em;
+    z-index: -100;
 }
 
 .wordplace-list{
@@ -28,7 +30,12 @@
     text-align: center;
     text-transform: capitalize;
     margin: 1.5rem;
-    color: var(--color-button);
+    color: #4d380d;
+    max-width: 22rem;
+    margin: 0 auto;
+    background-color: #dea83e;
+    padding: 0.7rem;
+    border-radius: 10px;
 }
 
 @media screen and (max-width:580px) {
